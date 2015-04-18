@@ -7,7 +7,11 @@ app.use(bodyParser.urlencoded({extended: true, limit: 26214400}));
 app.post("/inbound", function(req,res) {
   try {
     var msgarray = JSON.parse(req.body.mandrill_events);
+    console.log(msgarray);
+    console.log("1");
     var msg0 = msgarray[0];
+    console.log(msg0);
+    console.log("2");
     try {
       var summary = {
         text: msg0.text,
@@ -19,21 +23,6 @@ app.post("/inbound", function(req,res) {
     } catch (e) {
       console.log("parseerror 1: "+e);
     }
-    // console.log(req.body.mandrill_events[0]);
-    // try {
-    //   var event = JSON.parse(req.body.mandrill_events[0]);
-    // } catch (err) {
-    //   console.log("parse error: "+err);
-    // }
-    // console.log("3333333333333");
-    // console.log(event);
-    // var summary = {
-    //   text: event.text,
-    //   fromemail: event.from_email,
-    //   fromname: event.from_name,
-    //   subject: event.subject
-    // };
-    // console.log(summary);
   } catch (e) {
     console.log("error: "+e);
   }
