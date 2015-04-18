@@ -9,6 +9,11 @@ app.post("/inbound", function(req,res) {
     console.log("1111111111111");
     console.log(req.body.mandrill_events);
     console.log("2222222222222");
+    try {
+      console.log(JSON.parse(req.body.mandrill_events));
+    } catch (e) {
+      console.log("parseerror 1: "+e);
+    }
     console.log(req.body.mandrill_events[0]);
     try {
       var event = JSON.parse(req.body.mandrill_events[0]);
