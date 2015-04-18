@@ -8,3 +8,5 @@ app.post("/inbound", function(req,res) {
   console.log(req.body);
   res.end();
 });
+
+app.listen(4000, function() {console.log("listening emails on port 4000");});
