@@ -9,7 +9,7 @@ app.post("/inbound", function(req,res) {
     var msgarray = JSON.parse(req.body.mandrill_events);
     console.log(msgarray);
     console.log("1");
-    var msg0 = msgarray[0];
+    var msg0 = msgarray[0].msg;
     console.log(msg0);
     console.log("2");
     try {
