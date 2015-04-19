@@ -8,7 +8,7 @@ var secrets = require('./secrets.json');
 var transporter = nodemailer.createTransport(smtpTransport({
   host: "smtp.mandrillapp.com",
   port: 587,
-  auth: secrets.mandrill
+  auth: secrets.mandrill //{user: username, pass: apikey}
 }));
 
 // set up express
