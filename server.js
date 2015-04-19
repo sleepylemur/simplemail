@@ -17,18 +17,11 @@ app.post("/inbound", function(req,res) {
   try {
     var msgarray = JSON.parse(req.body.mandrill_events);
     var msg0 = msgarray[0].msg;
-    var summary = {
-      text: msg0.text,
-      fromemail: msg0.from_email,
-      fromname: msg0.from_name,
-      subject: msg0.subject
-    };
-    console.log(summary);
     var mailOptions = {
-      from: summary.fromname + " <"+summary.fromemail+">",
+      from: msg0.from_name + " <"+msg0.from_email+">",
       to: 'griffithse@gmail.com',
-      subject: summary.subject,
-      text: summary.text
+      subject: msg0.subject,
+      text: msg0.text
     };
     transporter.sendMail(mailOptions, function(err,info) {
       if (err) {
